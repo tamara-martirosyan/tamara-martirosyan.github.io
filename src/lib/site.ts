@@ -3,10 +3,18 @@ export const site = {
   role: "CTO & Co-Founder at TeamWorker.ai",
   title: "Senior Frontend Engineer",
   location: "Yerevan, Armenia",
+  url: "https://tamara-martirosyan.github.io",
   tagline:
     "Senior Frontend Engineer with 10+ years building high-traffic React and Next.js systems.",
   summary:
     "Senior Frontend Engineer with 10+ years of experience building and scaling high-traffic, performance-critical web applications used by millions of users. Expert in React, TypeScript, and modern frontend architecture, with a strong focus on rendering performance, scalability, and maintainability. Proven ability to lead technical decisions, design scalable systems, and deliver complex features end-to-end in fast-paced product environments.",
+  seo: {
+    title: "Tamara Martirosyan — CTO & Senior Frontend Engineer",
+    description:
+      "Tamara Martirosyan is CTO & Co-Founder at TeamWorker.ai and a Senior Frontend Engineer with 10+ years building scalable React, Next.js, and TypeScript systems for high-traffic and AI-powered products.",
+    ogDescription:
+      "CTO & Co-Founder at TeamWorker.ai. Senior Frontend Engineer building scalable React and Next.js products.",
+  },
   links: {
     email:
       "https://mail.google.com/mail/?view=cm&fs=1&to=tamara.martirosyan.93@gmail.com",
@@ -18,6 +26,7 @@ export const site = {
   contact: {
     email: "tamara.martirosyan.93@gmail.com",
     phone: "+374 93 484953",
+    phoneE164: "+37493484953",
     phoneDisplay: "(+374) 93 484953",
   },
   focus: [

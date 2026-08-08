@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Figtree, Geist_Mono } from "next/font/google";
 
+import { site } from "@/lib/site";
+
 import "./globals.css";
 
 const figtree = Figtree({
@@ -19,17 +21,59 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tamara Martirosyan — CTO & Senior Frontend Engineer",
-  description:
-    "Tamara Martirosyan is CTO & Co-Founder at TeamWorker.ai and a Senior Frontend Engineer with 10+ years building scalable React, Next.js, and TypeScript systems for high-traffic and AI-powered products.",
-  metadataBase: new URL("https://tamara-martirosyan.github.io"),
+  metadataBase: new URL(site.url),
+  title: site.seo.title,
+  description: site.seo.description,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  keywords: [
+    "Tamara Martirosyan",
+    "Senior Frontend Engineer",
+    "CTO",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "TeamWorker.ai",
+    "Yerevan",
+  ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Tamara Martirosyan",
-    description:
-      "CTO & Co-Founder at TeamWorker.ai. Senior Frontend Engineer building scalable React and Next.js products.",
-    url: "https://tamara-martirosyan.github.io",
-    siteName: "Tamara Martirosyan",
+    title: site.name,
+    description: site.seo.ogDescription,
+    url: site.url,
+    siteName: site.name,
+    locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: `${site.name} — ${site.role}`,
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.name,
+    description: site.seo.ogDescription,
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: `${site.name} — ${site.role}`,
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
