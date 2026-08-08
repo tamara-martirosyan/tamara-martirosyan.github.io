@@ -11,7 +11,7 @@ export const site = {
   seo: {
     title: "Tamara Martirosyan — CTO & Senior Frontend Engineer",
     description:
-      "Tamara Martirosyan is CTO & Co-Founder at TeamWorker.ai and a Senior Frontend Engineer with 10+ years building scalable React, Next.js, and TypeScript systems for high-traffic and AI-powered products.",
+      "Tamara Martirosyan — CTO at TeamWorker.ai and Senior Frontend Engineer building scalable React, Next.js, and TypeScript products.",
     ogDescription:
       "CTO & Co-Founder at TeamWorker.ai. Senior Frontend Engineer building scalable React and Next.js products.",
   },
