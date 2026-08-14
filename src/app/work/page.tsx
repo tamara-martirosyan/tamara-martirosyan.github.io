@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
 
 import JsonLd from "@/components/JsonLd";
-import { ProjectCard } from "@/components/ProjectsSection";
+import { ProjectList } from "@/components/ProjectsSection";
 import { getWorkIndexJsonLd } from "@/lib/json-ld";
-import { WORK_INDEX_PATH } from "@/lib/projects";
+import { projects, WORK_INDEX_PATH } from "@/lib/projects";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Selected work",
-  description: `Case studies from ${site.name} — AI collaboration platforms and complex enterprise workspaces.`,
+  description: `Case studies from ${site.name} — AI collaboration, reading platforms, and enterprise workspaces.`,
   alternates: {
     canonical: WORK_INDEX_PATH,
   },
   openGraph: {
     title: `Selected work — ${site.name}`,
     description:
-      "Case studies from products built end to end: TeamWorker.ai and DITAToo Web.",
+      "Case studies from products built end to end: TeamWorker.ai, DITAToo Web, and Kust Reader.",
     url: `${site.url}${WORK_INDEX_PATH}`,
   },
 };
@@ -33,20 +33,11 @@ export default function WorkPage() {
             Products built end to end.
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-foreground/70">
-            Deep dives into products I lead and ship — from AI marketplaces to
-            enterprise authoring workspaces.
+            Deep dives into products I lead and ship — from AI marketplaces and
+            reading platforms to enterprise authoring workspaces.
           </p>
 
-          <div className="mt-16 grid gap-16 lg:grid-cols-2 lg:gap-10">
-            {site.projects.map((project, index) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                index={index}
-                summary
-              />
-            ))}
-          </div>
+          <ProjectList projects={projects} showSummary className="mt-12" />
         </div>
       </main>
     </>

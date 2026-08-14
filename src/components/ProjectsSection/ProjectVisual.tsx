@@ -1,12 +1,16 @@
-import type { Project } from "@/lib/projects";
+import type { ComponentType } from "react";
+
+import type { Project, ProjectId } from "@/lib/projects";
 
 import { DitatooWorkspaceMock } from "./DitatooWorkspaceMock";
+import { KustReaderMock } from "./KustReaderMock";
 import { TeamWorkerProductMock } from "./TeamWorkerProductMock";
 
-const visuals = {
+const visuals: Record<ProjectId, ComponentType> = {
   teamworker: TeamWorkerProductMock,
   ditatoo: DitatooWorkspaceMock,
-} as const;
+  kust: KustReaderMock,
+};
 
 export function ProjectVisual({
   project,

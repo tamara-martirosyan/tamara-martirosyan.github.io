@@ -2,14 +2,11 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 import Reveal from "@/components/Reveal";
-import { WORK_INDEX_PATH } from "@/lib/projects";
-import { site } from "@/lib/site";
+import { featuredProjects, WORK_INDEX_PATH } from "@/lib/projects";
 
-import { ProjectCard } from "./ProjectCard";
+import { ProjectList } from "./ProjectList";
 
 export function ProjectsSection() {
-  const featured = site.projects.filter((project) => project.featured);
-
   return (
     <section
       id="work"
@@ -23,8 +20,8 @@ export function ProjectsSection() {
               Products built end to end.
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-foreground/70">
-              Case studies from products I lead and ship — AI collaboration
-              platforms and complex enterprise workspaces.
+              Case studies from products I lead and ship — AI collaboration,
+              reading platforms, and enterprise workspaces.
             </p>
           </div>
           <Link
@@ -36,11 +33,7 @@ export function ProjectsSection() {
           </Link>
         </Reveal>
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-10">
-          {featured.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
-        </div>
+        <ProjectList projects={featuredProjects} className="mt-8 md:mt-12" />
       </div>
     </section>
   );

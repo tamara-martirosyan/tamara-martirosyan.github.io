@@ -49,9 +49,9 @@ export function ProjectMockPane({
           {step}
         </span>
         <div>
-          <h4 className="font-heading text-base font-semibold tracking-tight text-ink">
+          <p className="font-heading text-base font-semibold tracking-tight text-ink">
             {title}
-          </h4>
+          </p>
           <p className="mt-1 text-xs leading-relaxed text-foreground/55">
             {description}
           </p>

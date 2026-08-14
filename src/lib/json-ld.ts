@@ -1,9 +1,4 @@
-import {
-  getProjectHref,
-  getProjectPath,
-  projects,
-  type Project,
-} from "@/lib/projects";
+import { getProjectPath, projects, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";
 
 export function getPersonJsonLd() {
@@ -45,8 +40,6 @@ export function getWorkIndexJsonLd() {
 }
 
 export function getProjectJsonLd(project: Project) {
-  const href = getProjectHref(project);
-
   return {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -59,6 +52,6 @@ export function getProjectJsonLd(project: Project) {
       url: site.url,
     },
     keywords: project.stack.join(", "),
-    ...(href ? { sameAs: href } : {}),
+    ...(project.liveUrl ? { sameAs: project.liveUrl } : {}),
   };
 }

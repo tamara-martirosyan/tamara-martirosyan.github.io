@@ -45,6 +45,7 @@ export const projects = [
       "OpenAI / Anthropic / Gemini",
     ],
     featured: true,
+    flow: ["Describe work", "Match the team", "Deliver & pay"],
     visualCaption:
       "Describe the work, match humans + AI agents, then deliver and pay",
   },
@@ -88,12 +89,70 @@ export const projects = [
       "Zod",
     ],
     featured: true,
+    flow: ["Files", "Document map", "Details"],
     visualCaption:
       "Files on the left, document map in the middle, details on the right",
   },
+  {
+    id: "kust",
+    name: "Kust Reader",
+    category: "Reading platform",
+    role: "Product & engineering",
+    period: "Selected work",
+    tagline:
+      "A PWA for discovering essays, reading them as EPUBs, and supporting the authors behind them.",
+    summary:
+      "Kust Reader is a digital reading product: readers browse publications, pick up in a custom EPUB viewer, keep progress and annotations, and donate to authors — while admins publish essays, manage catalogs, and notify the audience.",
+    challenge:
+      "Most reading apps stop at the viewer, and most CMS tools stop at publishing. We needed one product that felt like a native reader — pagination, themes, resume position, highlights — while still covering catalog, library, auth, author support, and a real publishing backend.",
+    outcome:
+      "A Next.js PWA with an epub.js reader, library, and admin CMS — backed by a NestJS API for publications, reading metadata, comments, Paylink donations, S3-hosted EPUBs, and Google/Apple/email auth.",
+    highlights: [
+      "Built the EPUB reading surface: chapter navigation, CFI-based progress, themes/font/brightness, highlights, page bookmarks, threaded comments, and prefetch so opening a book feels instant",
+      "Shipped discovery and library flows — recommended/new tabs, categories, author pages and events, search, likes, notifications, and an installable PWA shell",
+      "Designed the admin CMS for essays (EPUB upload), authors, categories, readers, and outbound notifications",
+      "Implemented NestJS domains — publications & search, user reading metadata, comments, author subscriptions, Paylink donations, S3 content storage, and SSO plus email verification",
+    ],
+    capabilities: [
+      "EPUB reader",
+      "Highlights & bookmarks",
+      "Reading progress",
+      "Comments",
+      "Author profiles",
+      "Personal library",
+      "Author donations",
+      "Admin publishing",
+    ],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Redux Toolkit",
+      "TanStack Query",
+      "NextAuth",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "epub.js",
+      "NestJS",
+      "MongoDB",
+      "AWS S3",
+      "Paylink",
+      "PWA",
+    ],
+    featured: true,
+    flow: ["Discover", "Read", "Keep & support"],
+    visualCaption:
+      "Browse essays, read in the EPUB viewer, then highlight and support authors",
+  },
 ] as const;
 
-export type Project = (typeof projects)[number];
+export type ProjectId = (typeof projects)[number]["id"];
+export type Project = (typeof projects)[number] & {
+  liveUrl?: string;
+};
+
+export const featuredProjects: readonly Project[] = projects.filter(
+  (project) => project.featured,
+);
 
 export function getProjectById(id: string): Project | undefined {
   return projects.find((project) => project.id === id);
@@ -110,8 +169,4 @@ export function getNextProject(id: string): Project | undefined {
   if (index < 0) return undefined;
 
   return projects[(index + 1) % projects.length];
-}
-
-export function getProjectHref(project: Project): string | undefined {
-  return "href" in project ? project.href : undefined;
 }

@@ -4,7 +4,6 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import {
   getNextProject,
-  getProjectHref,
   getProjectPath,
   WORK_INDEX_PATH,
   type Project,
@@ -14,7 +13,6 @@ import { ProjectVisual } from "./ProjectVisual";
 
 export function ProjectCaseStudy({ project }: { project: Project }) {
   const next = getNextProject(project.id);
-  const liveHref = getProjectHref(project);
 
   return (
     <article>
@@ -40,9 +38,9 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
             </div>
 
             <h1 className="font-heading mt-4 text-4xl font-semibold tracking-[-0.03em] text-ink md:text-6xl">
-              {liveHref ? (
+              {project.liveUrl ? (
                 <a
-                  href={liveHref}
+                  href={project.liveUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-3 transition-colors hover:text-signal-deep"
