@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { WORK_INDEX_PATH } from "@/lib/projects";
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <main className="flex flex-1 flex-col items-start justify-center px-5 py-24 md:px-8">
       <div className="mx-auto w-full max-w-6xl">
@@ -24,4 +24,6 @@ export default function NotFound() {
       </div>
     </main>
   );
-}
+};
+
+export default NotFound;

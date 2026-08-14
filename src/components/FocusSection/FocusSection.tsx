@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 
 import { site } from "@/lib/site";
 
-export function FocusSection() {
+const FocusSection = () => {
   return (
     <section
       id="focus"
@@ -50,4 +50,6 @@ export function FocusSection() {
       </div>
     </section>
   );
-}
+};
+
+export default FocusSection;

@@ -1,1 +1,1 @@
-export { JsonLd as default } from "./JsonLd";
+export { default } from "./JsonLd";

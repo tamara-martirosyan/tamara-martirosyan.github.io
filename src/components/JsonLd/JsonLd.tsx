@@ -1,4 +1,4 @@
-export function JsonLd({ data }: { data: unknown }) {
+const JsonLd = ({ data }: { data: unknown }) => {
   return (
     <script
       type="application/ld+json"
@@ -7,4 +7,6 @@ export function JsonLd({ data }: { data: unknown }) {
       }}
     />
   );
-}
+};
+
+export default JsonLd;

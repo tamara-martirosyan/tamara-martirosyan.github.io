@@ -1,1 +1,1 @@
-export { FocusSection as default } from "./FocusSection";
+export { default } from "./FocusSection";

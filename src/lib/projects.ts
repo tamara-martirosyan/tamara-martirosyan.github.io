@@ -90,8 +90,6 @@ export const projects = [
     ],
     featured: true,
     flow: ["Files", "Document map", "Details"],
-    visualCaption:
-      "Files on the left, document map in the middle, details on the right",
   },
   {
     id: "kust",
@@ -148,6 +146,7 @@ export const projects = [
 export type ProjectId = (typeof projects)[number]["id"];
 export type Project = (typeof projects)[number] & {
   liveUrl?: string;
+  visualCaption?: string;
 };
 
 export const featuredProjects: readonly Project[] = projects.filter(

@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 
 import { site } from "@/lib/site";
 
-export function SkillsSection() {
+const SkillsSection = () => {
   return (
     <section id="skills" className="scroll-mt-24 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-6xl">
@@ -53,4 +53,6 @@ export function SkillsSection() {
       </div>
     </section>
   );
-}
+};
+
+export default SkillsSection;

@@ -1,7 +1,7 @@
 import Reveal from "@/components/Reveal";
 import { site } from "@/lib/site";
 
-export function WorkSection() {
+const WorkSection = () => {
   return (
     <section
       id="experience"
@@ -88,4 +88,6 @@ export function WorkSection() {
       </div>
     </section>
   );
-}
+};
+
+export default WorkSection;

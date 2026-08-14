@@ -10,7 +10,7 @@ type RevealProps = {
   delayMs?: number;
 };
 
-export function Reveal({ children, className, delayMs = 0 }: RevealProps) {
+const Reveal = ({ children, className, delayMs = 0 }: RevealProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -45,4 +45,6 @@ export function Reveal({ children, className, delayMs = 0 }: RevealProps) {
       {children}
     </div>
   );
-}
+};
+
+export default Reveal;

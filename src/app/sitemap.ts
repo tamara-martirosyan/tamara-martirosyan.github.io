@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+const sitemap = (): MetadataRoute.Sitemap => {
   const lastModified = new Date();
 
   const routes: MetadataRoute.Sitemap = [
@@ -32,4 +32,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   return routes;
-}
+};
+
+export default sitemap;

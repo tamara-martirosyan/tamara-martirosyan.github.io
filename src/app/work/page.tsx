@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import JsonLd from "@/components/JsonLd";
-import { ProjectList } from "@/components/ProjectsSection";
+import ProjectList from "@/components/ProjectsSection/components/ProjectList";
 import { getWorkIndexJsonLd } from "@/lib/json-ld";
 import { projects, WORK_INDEX_PATH } from "@/lib/projects";
 import { site } from "@/lib/site";
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function WorkPage() {
+const WorkPage = () => {
   return (
     <>
       <JsonLd data={getWorkIndexJsonLd()} />
@@ -42,4 +42,6 @@ export default function WorkPage() {
       </main>
     </>
   );
-}
+};
+
+export default WorkPage;

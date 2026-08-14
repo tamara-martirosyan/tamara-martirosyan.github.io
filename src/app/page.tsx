@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <JsonLd data={getPersonJsonLd()} />
@@ -31,4 +31,6 @@ export default function Home() {
       </main>
     </>
   );
-}
+};
+
+export default Home;

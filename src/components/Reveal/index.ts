@@ -1,1 +1,1 @@
-export { Reveal as default } from "./Reveal";
+export { default } from "./Reveal";

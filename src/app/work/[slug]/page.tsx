@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import JsonLd from "@/components/JsonLd";
-import { ProjectCaseStudy } from "@/components/ProjectsSection";
+import ProjectCaseStudy from "@/components/ProjectsSection/components/ProjectCaseStudy";
 import { getProjectJsonLd } from "@/lib/json-ld";
 import { getProjectById, getProjectPath, projects } from "@/lib/projects";
 import { site } from "@/lib/site";
@@ -10,13 +10,13 @@ import { site } from "@/lib/site";
 export const dynamic = "force-static";
 export const dynamicParams = false;
 
-export function generateStaticParams() {
+export const generateStaticParams = () => {
   return projects.map((project) => ({ slug: project.id }));
-}
+};
 
-export async function generateMetadata({
+export const generateMetadata = async ({
   params,
-}: PageProps<"/work/[slug]">): Promise<Metadata> {
+}: PageProps<"/work/[slug]">): Promise<Metadata> => {
   const { slug } = await params;
   const project = getProjectById(slug);
 
@@ -38,11 +38,11 @@ export async function generateMetadata({
       url: `${site.url}${path}`,
     },
   };
-}
+};
 
-export default async function WorkProjectPage({
+const WorkProjectPage = async ({
   params,
-}: PageProps<"/work/[slug]">) {
+}: PageProps<"/work/[slug]">) => {
   const { slug } = await params;
   const project = getProjectById(slug);
 
@@ -58,4 +58,6 @@ export default async function WorkProjectPage({
       </main>
     </>
   );
-}
+};
+
+export default WorkProjectPage;

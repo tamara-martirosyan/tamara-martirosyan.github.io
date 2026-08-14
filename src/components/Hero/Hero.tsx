@@ -1,13 +1,13 @@
 import { ArrowUpRight } from "lucide-react";
 
-import HeroCanvas from "./HeroCanvas";
-import HeroName from "./HeroName";
+import HeroCanvas from "./components/HeroCanvas";
+import HeroName from "./components/HeroName";
 
 import { Button } from "@/components/ui/button";
 
 import { site } from "@/lib/site";
 
-export function Hero() {
+const Hero = () => {
   return (
     <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[#070f1c]">
       <HeroCanvas />
@@ -50,4 +50,6 @@ export function Hero() {
       </div>
     </section>
   );
-}
+};
+
+export default Hero;

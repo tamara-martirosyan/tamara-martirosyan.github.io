@@ -12,7 +12,7 @@ const footerLinks = [
 
 const linkClassName = "transition-colors hover:text-ink";
 
-export function SiteFooter() {
+const SiteFooter = () => {
   return (
     <footer className="border-t border-border/80 px-5 py-10 md:px-8">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
@@ -49,4 +49,6 @@ export function SiteFooter() {
       </div>
     </footer>
   );
-}
+};
+
+export default SiteFooter;

@@ -30,7 +30,7 @@ function isWorkPath(pathname: string) {
   return pathname === "/work" || pathname.startsWith(WORK_INDEX_PATH);
 }
 
-function NavLink({
+const NavLink = ({
   href,
   label,
   className,
@@ -40,7 +40,7 @@ function NavLink({
   label: string;
   className?: string;
   currentClassName?: string;
-}) {
+}) => {
   const pathname = usePathname();
   const current = href === WORK_INDEX_PATH && isWorkPath(pathname);
 
@@ -53,9 +53,9 @@ function NavLink({
       {label}
     </Link>
   );
-}
+};
 
-export function SiteHeader() {
+const SiteHeader = () => {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
@@ -167,4 +167,6 @@ export function SiteHeader() {
       </div>
     </header>
   );
-}
+};
+
+export default SiteHeader;

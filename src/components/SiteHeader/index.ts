@@ -1,1 +1,1 @@
-export { SiteHeader as default } from "./SiteHeader";
+export { default } from "./SiteHeader";

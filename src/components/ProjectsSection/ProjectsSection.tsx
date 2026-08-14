@@ -4,9 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { featuredProjects, WORK_INDEX_PATH } from "@/lib/projects";
 
-import { ProjectList } from "./ProjectList";
+import ProjectList from "./components/ProjectList";
 
-export function ProjectsSection() {
+const ProjectsSection = () => {
   return (
     <section
       id="work"
@@ -37,4 +37,6 @@ export function ProjectsSection() {
       </div>
     </section>
   );
-}
+};
+
+export default ProjectsSection;

@@ -6,7 +6,7 @@ import Reveal from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site";
 
-export function ContactSection() {
+const ContactSection = () => {
   return (
     <section id="contact" className="scroll-mt-24 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-6xl">
@@ -85,4 +85,6 @@ export function ContactSection() {
       </div>
     </section>
   );
-}
+};
+
+export default ContactSection;

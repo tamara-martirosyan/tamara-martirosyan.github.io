@@ -1,1 +1,1 @@
-export { ContactSection as default } from "./ContactSection";
+export { default } from "./ContactSection";
