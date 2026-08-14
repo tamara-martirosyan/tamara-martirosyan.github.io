@@ -23,7 +23,7 @@ export function AboutSection() {
                 Current
               </p>
               <p className="mt-3 font-heading text-lg font-semibold tracking-tight text-ink">
-                Senior Software Engineer at Picsart
+                Open to mid and senior frontend roles
               </p>
             </div>
             <div className="border-t-2 border-ink/15 pt-5">
@@ -31,7 +31,7 @@ export function AboutSection() {
                 Background
               </p>
               <p className="mt-3 font-heading text-lg font-semibold tracking-tight text-ink">
-                10+ years shipping high-traffic React systems at Picsart
+                10+ years shipping high-traffic React and Next.js systems
               </p>
             </div>
           </div>

@@ -56,7 +56,7 @@ export const site = {
     {
       company: "Picsart",
       role: "Senior Software Engineer",
-      period: "2023 – 2026",
+      period: "2023 – May 2026",
       description:
         "Led frontend architecture for high-impact product features in a large-scale production environment used by millions of users.",
       highlights: [
