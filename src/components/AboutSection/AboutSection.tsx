@@ -1,6 +1,4 @@
 import Reveal from "@/components/Reveal";
-
-
 import { site } from "@/lib/site";
 
 export function AboutSection() {
@@ -25,7 +23,7 @@ export function AboutSection() {
                 Current
               </p>
               <p className="mt-3 font-heading text-lg font-semibold tracking-tight text-ink">
-                CTO & Co-Founder at TeamWorker.ai since 2024
+                Senior Software Engineer at Picsart
               </p>
             </div>
             <div className="border-t-2 border-ink/15 pt-5">

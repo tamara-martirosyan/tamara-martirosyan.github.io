@@ -1,3 +1,9 @@
+import {
+  getProjectHref,
+  getProjectPath,
+  projects,
+  type Project,
+} from "@/lib/projects";
 import { site } from "@/lib/site";
 
 export function getPersonJsonLd() {
@@ -7,25 +13,52 @@ export function getPersonJsonLd() {
     name: site.name,
     url: site.url,
     image: `${site.url}/og.png`,
-    jobTitle: [site.title, "CTO & Co-Founder"],
+    jobTitle: site.title,
     description: site.seo.description,
     email: `mailto:${site.contact.email}`,
-    telephone: site.contact.phoneE164,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Yerevan",
       addressCountry: "AM",
     },
-    worksFor: {
-      "@type": "Organization",
-      name: "TeamWorker.ai",
-      url: site.links.teamworker,
-    },
     alumniOf: {
       "@type": "CollegeOrUniversity",
       name: site.education.school,
     },
-    sameAs: [site.links.github, site.links.linkedin, site.links.teamworker],
-    knowsAbout: site.stack,
+    sameAs: [site.links.github, site.links.linkedin],
+    knowsAbout: [...site.stack, ...projects.map((project) => project.name)],
+  };
+}
+
+export function getWorkIndexJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Selected work — ${site.name}`,
+    itemListElement: projects.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${site.url}${getProjectPath(project.id)}`,
+      name: project.name,
+    })),
+  };
+}
+
+export function getProjectJsonLd(project: Project) {
+  const href = getProjectHref(project);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.name,
+    description: project.summary,
+    url: `${site.url}${getProjectPath(project.id)}`,
+    creator: {
+      "@type": "Person",
+      name: site.name,
+      url: site.url,
+    },
+    keywords: project.stack.join(", "),
+    ...(href ? { sameAs: href } : {}),
   };
 }

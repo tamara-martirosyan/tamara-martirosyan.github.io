@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Figtree, Geist_Mono } from "next/font/google";
 
+import SiteFooter from "@/components/SiteFooter";
+import SiteHeader from "@/components/SiteHeader";
 import { site } from "@/lib/site";
 
 import "./globals.css";
@@ -22,7 +24,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: site.seo.title,
+  title: {
+    default: site.seo.title,
+    template: `%s — ${site.name}`,
+  },
   description: site.seo.description,
   applicationName: site.name,
   authors: [{ name: site.name, url: site.url }],
@@ -31,16 +36,11 @@ export const metadata: Metadata = {
   keywords: [
     "Tamara Martirosyan",
     "Senior Frontend Engineer",
-    "CTO",
     "React",
     "Next.js",
     "TypeScript",
-    "TeamWorker.ai",
     "Yerevan",
   ],
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: site.name,
     description: site.seo.ogDescription,
@@ -83,7 +83,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${figtree.variable} ${bricolage.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }

@@ -1,6 +1,8 @@
+import { projects } from "@/lib/projects";
+
 export const site = {
   name: "Tamara Martirosyan",
-  role: "CTO & Co-Founder at TeamWorker.ai",
+  role: "Senior Frontend Engineer",
   title: "Senior Frontend Engineer",
   location: "Yerevan, Armenia",
   url: "https://tamara-martirosyan.github.io",
@@ -9,11 +11,11 @@ export const site = {
   summary:
     "Senior Frontend Engineer with 10+ years of experience building and scaling high-traffic, performance-critical web applications used by millions of users. Expert in React, TypeScript, and modern frontend architecture, with a strong focus on rendering performance, scalability, and maintainability. Proven ability to lead technical decisions, design scalable systems, and deliver complex features end-to-end in fast-paced product environments.",
   seo: {
-    title: "Tamara Martirosyan — CTO & Senior Frontend Engineer",
+    title: "Tamara Martirosyan — Senior Frontend Engineer",
     description:
-      "Tamara Martirosyan — CTO at TeamWorker.ai and Senior Frontend Engineer building scalable React, Next.js, and TypeScript products.",
+      "Tamara Martirosyan — Senior Frontend Engineer building scalable React, Next.js, and TypeScript products.",
     ogDescription:
-      "CTO & Co-Founder at TeamWorker.ai. Senior Frontend Engineer building scalable React and Next.js products.",
+      "Senior Frontend Engineer building scalable React and Next.js products.",
   },
   links: {
     email:
@@ -21,7 +23,6 @@ export const site = {
     phone: "tel:+37493484953",
     github: "https://github.com/tamara-martirosyan",
     linkedin: "https://www.linkedin.com/in/tamara-martirosyan",
-    teamworker: "https://teamworker.ai",
   },
   contact: {
     email: "tamara.martirosyan.93@gmail.com",
@@ -52,19 +53,6 @@ export const site = {
     },
   ],
   experience: [
-    {
-      company: "TeamWorker.ai",
-      role: "CTO & Co-Founder",
-      period: "2024 – Present",
-      href: "https://teamworker.ai",
-      description:
-        "Leading product and engineering for an AI-native collaboration platform — architecture, interface systems, and technical direction from the ground up.",
-      highlights: [
-        "Define technical strategy and frontend architecture for an AI-powered product",
-        "Ship end-to-end product experiences across agents, collaboration, and delivery workflows",
-        "Build scalable systems with React, Next.js, and TypeScript",
-      ],
-    },
     {
       company: "Picsart",
       role: "Senior Software Engineer",
@@ -167,4 +155,5 @@ export const site = {
     "Performance",
     "AI products",
   ],
+  projects,
 } as const;

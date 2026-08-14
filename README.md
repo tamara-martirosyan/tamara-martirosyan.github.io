@@ -1,6 +1,6 @@
 # tamara-martirosyan.github.io
 
-Personal site for **Tamara Martirosyan** — Co-Founder at [TeamWorker.ai](https://teamworker.ai) and Senior Frontend Engineer.
+Personal site for **Tamara Martirosyan** — Senior Frontend Engineer.
 
 ## Stack
 

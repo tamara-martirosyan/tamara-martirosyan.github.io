@@ -39,12 +39,6 @@ export function ContactSection() {
                 >
                   {site.contact.email}
                 </a>
-                <a
-                  href={site.links.phone}
-                  className="transition-colors hover:text-[#8eb8ff]"
-                >
-                  {site.contact.phoneDisplay}
-                </a>
                 <span>{site.location}</span>
               </div>
 

@@ -1,10 +1,16 @@
+import Link from "next/link";
+
+import { WORK_INDEX_PATH } from "@/lib/projects";
 import { site } from "@/lib/site";
 
 const footerLinks = [
+  { href: WORK_INDEX_PATH, label: "Work", external: false },
   { href: site.links.email, label: "Email", external: true },
   { href: site.links.linkedin, label: "LinkedIn", external: true },
   { href: site.links.github, label: "GitHub", external: true },
 ] as const;
+
+const linkClassName = "transition-colors hover:text-ink";
 
 export function SiteFooter() {
   return (
@@ -18,18 +24,23 @@ export function SiteFooter() {
         </div>
 
         <nav className="flex flex-wrap gap-x-6 gap-y-2">
-          {footerLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              {...(link.external
-                ? { target: "_blank", rel: "noreferrer" }
-                : {})}
-              className="transition-colors hover:text-ink"
-            >
-              {link.label}
-            </a>
-          ))}
+          {footerLinks.map((link) =>
+            link.external ? (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className={linkClassName}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link key={link.label} href={link.href} className={linkClassName}>
+                {link.label}
+              </Link>
+            ),
+          )}
         </nav>
 
         <p>

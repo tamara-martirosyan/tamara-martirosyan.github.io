@@ -1,34 +1,34 @@
+import type { Metadata } from "next";
+
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import FocusSection from "@/components/FocusSection";
 import Hero from "@/components/Hero";
-import SiteFooter from "@/components/SiteFooter";
-import SiteHeader from "@/components/SiteHeader";
+import JsonLd from "@/components/JsonLd";
+import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import WorkSection from "@/components/WorkSection";
 import { getPersonJsonLd } from "@/lib/json-ld";
 
-export default function Home() {
-  const jsonLd = getPersonJsonLd();
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
+export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-        }}
-      />
-      <SiteHeader />
+      <JsonLd data={getPersonJsonLd()} />
       <main className="flex-1">
         <Hero />
         <AboutSection />
+        <ProjectsSection />
         <WorkSection />
         <FocusSection />
         <SkillsSection />
         <ContactSection />
       </main>
-      <SiteFooter />
     </>
   );
 }

@@ -3,7 +3,6 @@ import { ArrowUpRight } from "lucide-react";
 import HeroCanvas from "./HeroCanvas";
 import HeroName from "./HeroName";
 
-
 import { Button } from "@/components/ui/button";
 
 import { site } from "@/lib/site";
@@ -32,9 +31,9 @@ export function Hero() {
               size="lg"
               nativeButton={false}
               className="h-12 rounded-xl bg-signal px-7 text-white transition-transform hover:bg-signal-deep hover:scale-[1.02] active:scale-[0.99]"
-              render={<a href="#experience" />}
+              render={<a href="#work" />}
             >
-              View experience
+              View selected work
             </Button>
             <Button
               size="lg"

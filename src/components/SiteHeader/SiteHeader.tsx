@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -12,21 +13,57 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { WORK_INDEX_PATH } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
 
 const nav = [
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#focus", label: "Focus" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: WORK_INDEX_PATH, label: "Work" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#focus", label: "Focus" },
+  { href: "/#skills", label: "Skills" },
+  { href: "/#contact", label: "Contact" },
 ] as const;
 
+function isWorkPath(pathname: string) {
+  return pathname === "/work" || pathname.startsWith(WORK_INDEX_PATH);
+}
+
+function NavLink({
+  href,
+  label,
+  className,
+  currentClassName,
+}: {
+  href: string;
+  label: string;
+  className?: string;
+  currentClassName?: string;
+}) {
+  const pathname = usePathname();
+  const current = href === WORK_INDEX_PATH && isWorkPath(pathname);
+
+  return (
+    <Link
+      href={href}
+      aria-current={current ? "page" : undefined}
+      className={cn(className, current && currentClassName)}
+    >
+      {label}
+    </Link>
+  );
+}
+
 export function SiteHeader() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
+  const overlay = isHome && !scrolled;
 
   useEffect(() => {
+    if (!isHome) return;
+
     const onScroll = () => {
       setScrolled(window.scrollY > window.innerHeight * 0.7);
     };
@@ -34,15 +71,16 @@ export function SiteHeader() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHome]);
 
   return (
     <header
       className={cn(
         "inset-x-0 top-0 z-40 transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300",
-        scrolled
-          ? "fixed border-b border-border/80 bg-[#fafbfc]/85 shadow-sm backdrop-blur-md"
-          : "absolute border-b border-transparent",
+        overlay
+          ? "absolute border-b border-transparent"
+          : "border-b border-border/80 bg-background/85 shadow-sm backdrop-blur-md",
+        !overlay && (isHome ? "fixed" : "sticky"),
       )}
     >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8">
@@ -50,7 +88,9 @@ export function SiteHeader() {
           href="/"
           className={cn(
             "font-heading text-sm font-semibold tracking-tight transition-colors",
-            scrolled ? "text-ink hover:text-signal-deep" : "text-fog hover:opacity-70",
+            overlay
+              ? "text-fog hover:opacity-70"
+              : "text-ink hover:text-signal-deep",
           )}
         >
           {site.name}
@@ -58,32 +98,26 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-8 lg:flex">
           {nav.map((item) => (
-            <a
+            <NavLink
               key={item.href}
               href={item.href}
+              label={item.label}
               className={cn(
                 "text-sm transition-colors",
-                scrolled
-                  ? "text-foreground/55 hover:text-ink"
-                  : "text-fog/65 hover:text-fog",
+                overlay
+                  ? "text-fog/65 hover:text-fog"
+                  : "text-foreground/55 hover:text-ink",
               )}
-            >
-              {item.label}
-            </a>
+              currentClassName={overlay ? undefined : "text-ink"}
+            />
           ))}
           <Button
             className="rounded-xl bg-signal text-white hover:bg-signal-deep"
             nativeButton={false}
-            render={
-              <a
-                href={site.links.teamworker}
-                target="_blank"
-                rel="noreferrer"
-              />
-            }
+            render={<Link href="/#contact" />}
             size="sm"
           >
-            TeamWorker.ai
+            Contact
           </Button>
         </nav>
 
@@ -95,9 +129,9 @@ export function SiteHeader() {
                 size="icon-sm"
                 className={cn(
                   "lg:hidden",
-                  scrolled
-                    ? "border-border bg-white text-ink hover:bg-muted"
-                    : "border-white/20 bg-white/5 text-fog hover:bg-white/10 hover:text-fog",
+                  overlay
+                    ? "border-white/20 bg-white/5 text-fog hover:bg-white/10 hover:text-fog"
+                    : "border-border bg-white text-ink hover:bg-muted",
                 )}
                 aria-label="Open menu"
               />
@@ -113,26 +147,19 @@ export function SiteHeader() {
             </SheetHeader>
             <nav className="mt-6 flex flex-col gap-4">
               {nav.map((item) => (
-                <a
+                <NavLink
                   key={item.href}
                   href={item.href}
+                  label={item.label}
                   className="text-base text-foreground/80 transition-colors hover:text-foreground"
-                >
-                  {item.label}
-                </a>
+                />
               ))}
               <Button
                 className="mt-2 justify-start rounded-xl bg-signal text-white hover:bg-signal-deep"
                 nativeButton={false}
-                render={
-                  <a
-                    href={site.links.teamworker}
-                    target="_blank"
-                    rel="noreferrer"
-                  />
-                }
+                render={<Link href="/#contact" />}
               >
-                TeamWorker.ai
+                Contact
               </Button>
             </nav>
           </SheetContent>
