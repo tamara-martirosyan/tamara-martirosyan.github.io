@@ -36,7 +36,6 @@ const WorkPage = () => {
             Deep dives into products I lead and ship — from AI marketplaces and
             reading platforms to enterprise authoring workspaces.
           </p>
-
           <ProjectList projects={projects} showSummary className="mt-12" />
         </div>
       </main>
