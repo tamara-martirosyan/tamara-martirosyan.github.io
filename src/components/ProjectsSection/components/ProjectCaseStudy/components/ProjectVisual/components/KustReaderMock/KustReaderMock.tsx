@@ -1,11 +1,52 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-import ProjectMock from "../ProjectMock";
-import ProjectMockPane from "../ProjectMock/components/ProjectMockPane";
+import InViewVideo from "./components/InViewVideo";
 
-const MockCard = ({
+const shots = [
+  {
+    step: "01",
+    title: "Discover",
+    description:
+      "Recommended and new essays, with categories and authors one tap away.",
+    src: "/projects/kust/discover.jpg",
+    alt: "Kust Reader discover feed with recommended and new essays",
+  },
+  {
+    step: "02",
+    title: "Sign in",
+    description:
+      "Google or email sign-in gets readers into their library fast.",
+    src: "/projects/kust/login.jpg",
+    alt: "Kust Reader login screen with Google and email sign-in options",
+  },
+  {
+    step: "03",
+    title: "Read",
+    description:
+      "A paginated EPUB viewer with highlight, bookmark, comment, and progress controls always in reach.",
+    src: "/projects/kust/reader-toolbar.jpg",
+    alt: "Kust Reader EPUB viewer open on The Call of the Wild with the reading toolbar visible",
+  },
+  {
+    step: "04",
+    title: "Personalize",
+    description: "Brightness, font size, and theme, saved per reader.",
+    src: "/projects/kust/settings.jpg",
+    alt: "Kust Reader display settings panel with brightness, font size, and theme controls",
+  },
+  {
+    step: "05",
+    title: "Navigate",
+    description: "Jump to any chapter from a synced table of contents.",
+    src: "/projects/kust/contents.jpg",
+    alt: "Kust Reader table of contents panel listing book chapters",
+  },
+] as const;
+
+const MediaFrame = ({
   children,
   className,
 }: {
@@ -13,7 +54,12 @@ const MockCard = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("rounded-lg border px-3 py-2", className)}>
+    <div
+      className={cn(
+        "overflow-hidden rounded-[1.25rem] border border-border/70 bg-white shadow-[0_40px_80px_-40px_rgba(11,27,51,0.55)] ring-1 ring-black/[0.04] md:rounded-[1.5rem]",
+        className,
+      )}
+    >
       {children}
     </div>
   );
@@ -21,82 +67,101 @@ const MockCard = ({
 
 const KustReaderMock = () => {
   return (
-    <ProjectMock
-      title="Kust Reader"
-      description="How a reader moves through the product — from catalog to EPUB page to annotation and support."
-    >
-      <ProjectMockPane
-        step="1"
-        title="Discover"
-        description="Browse recommended essays, authors, and categories."
-      >
-        <div className="space-y-2 text-sm">
-          <MockCard className="border-signal/30 bg-signal-soft">
-            <p className="text-xs text-signal-deep/70">Recommended</p>
-            <p className="mt-1 font-medium text-signal-deep">
-              Letters from the Shore
-            </p>
-            <p className="mt-0.5 text-xs text-signal-deep/70">
-              Ani Petrosyan · 18 min
-            </p>
-          </MockCard>
-          <MockCard className="border-border bg-background">
-            <p className="font-medium text-ink">Winter in Gyumri</p>
-            <p className="mt-0.5 text-xs text-foreground/50">New · Essay</p>
-          </MockCard>
-          <MockCard className="border-border bg-background text-foreground/65">
-            Authors · Categories · Library
-          </MockCard>
-        </div>
-      </ProjectMockPane>
+    <div className="space-y-16 md:space-y-24">
+      <div className="mx-auto max-w-3xl text-center">
+        <p className="section-label">Product walkthrough</p>
+        <h2 className="font-heading mt-3 text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+          From catalog to page to annotation
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-foreground/60 md:text-lg">
+          A full pass through the product — discovery, the EPUB reader, and
+          the highlights and bookmarks that keep readers coming back.
+        </p>
+      </div>
 
-      <ProjectMockPane
-        step="2"
-        title="Read"
-        description="Open the EPUB in a paginated viewer with saved place and theme."
-        highlight
-      >
-        <div className="space-y-2 text-sm">
-          <MockCard className="border-signal/40 bg-white">
-            <p className="text-xs text-foreground/45">Chapter 3</p>
-            <p className="mt-1 font-medium text-ink">The last ferry</p>
-            <p className="mt-2 text-xs leading-relaxed text-foreground/60">
-              The harbor lights thinned until only the water kept time…
-            </p>
-          </MockCard>
-          <MockCard className="border-signal/30 bg-signal-soft text-signal-deep">
-            Progress 42% · Sepia
-          </MockCard>
-          <MockCard className="border-border bg-white text-foreground/65">
-            Font · brightness · resume CFI
-          </MockCard>
-        </div>
-      </ProjectMockPane>
+      <div className="mx-auto w-full max-w-55">
+        <MediaFrame className="rounded-[2rem]">
+          <InViewVideo
+            src="/projects/kust/kust.mp4"
+            poster="/projects/kust/mobile-poster.jpg"
+            label="Kust Reader mobile walkthrough: browsing essays, opening a book, and highlighting a passage"
+            width={392}
+            height={850}
+            className="aspect-392/850"
+          />
+        </MediaFrame>
+        <p className="mt-4 text-center text-sm text-foreground/55">
+          Browse, open a book, and highlight a passage on mobile
+        </p>
+      </div>
 
-      <ProjectMockPane
-        step="3"
-        title="Keep & support"
-        description="Highlight, bookmark, comment, and donate to the author."
-      >
-        <div className="space-y-2 text-sm">
-          <MockCard className="border-signal/30 bg-signal-soft">
-            <p className="font-medium text-signal-deep">Highlight</p>
-            <p className="mt-1 text-xs leading-relaxed text-signal-deep/70">
-              “only the water kept time”
+      <div className="space-y-16 md:space-y-28">
+        {shots.map((shot) => (
+          <section
+            key={shot.step}
+            className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12 lg:even:flex-row-reverse"
+          >
+            <div className="lg:w-[38%] lg:shrink-0">
+              <p className="font-mono text-[11px] tracking-[0.18em] text-muted-foreground uppercase">
+                Step {shot.step}
+              </p>
+              <h3 className="font-heading mt-3 text-2xl font-semibold tracking-tight text-ink md:text-3xl">
+                {shot.title}
+              </h3>
+              <p className="mt-3 max-w-md text-base leading-relaxed text-foreground/60">
+                {shot.description}
+              </p>
+            </div>
+
+            <MediaFrame className="min-w-0 lg:flex-1">
+              <Image
+                src={shot.src}
+                alt={shot.alt}
+                width={2400}
+                height={1336}
+                className="h-auto w-full"
+              />
+            </MediaFrame>
+          </section>
+        ))}
+
+        <section className="flex flex-col gap-8 lg:flex-row-reverse lg:items-center lg:gap-12">
+          <div className="lg:w-[38%] lg:shrink-0">
+            <p className="font-mono text-[11px] tracking-[0.18em] text-muted-foreground uppercase">
+              Step 06
             </p>
-          </MockCard>
-          <MockCard className="border-border bg-background text-foreground/65">
-            Page bookmark · Ch. 3
-          </MockCard>
-          <MockCard className="border-border bg-background text-foreground/65">
-            Threaded comments
-          </MockCard>
-          <MockCard className="border-border bg-background text-foreground/65">
-            Support the author
-          </MockCard>
-        </div>
-      </ProjectMockPane>
-    </ProjectMock>
+            <h3 className="font-heading mt-3 text-2xl font-semibold tracking-tight text-ink md:text-3xl">
+              Keep & support
+            </h3>
+            <p className="mt-3 max-w-md text-base leading-relaxed text-foreground/60">
+              Highlights and page bookmarks stay attached to the exact
+              passage, ready to revisit or support the author from.
+            </p>
+          </div>
+
+          <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:flex-1">
+            <MediaFrame>
+              <Image
+                src="/projects/kust/highlights.jpg"
+                alt="Kust Reader highlights panel listing a saved passage"
+                width={2400}
+                height={1336}
+                className="h-auto w-full"
+              />
+            </MediaFrame>
+            <MediaFrame>
+              <Image
+                src="/projects/kust/bookmarks.jpg"
+                alt="Kust Reader bookmarks panel with a saved reading position"
+                width={2400}
+                height={1336}
+                className="h-auto w-full"
+              />
+            </MediaFrame>
+          </div>
+        </section>
+      </div>
+    </div>
   );
 };
 

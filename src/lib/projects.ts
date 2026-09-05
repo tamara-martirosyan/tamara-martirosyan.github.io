@@ -138,8 +138,6 @@ export const projects = [
     ],
     featured: true,
     flow: ["Discover", "Read", "Keep & support"],
-    visualCaption:
-      "Browse essays, read in the EPUB viewer, then highlight and support authors",
   },
 ] as const;
 

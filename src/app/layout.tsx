@@ -83,7 +83,7 @@ const RootLayout = ({ children }: LayoutProps<"/">) => {
       lang="en"
       className={`${figtree.variable} ${bricolage.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <SiteHeader />
         {children}
         <SiteFooter />
