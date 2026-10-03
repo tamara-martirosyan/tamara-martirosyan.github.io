@@ -56,29 +56,34 @@ const WorkSection = () => {
                       ))}
                     </ul>
 
-                    {"project" in item && item.project ? (
-                      <div className="mt-8 max-w-3xl rounded-2xl bg-[linear-gradient(145deg,#0b1b33_0%,#102746_100%)] px-6 py-6 text-fog md:px-8 md:py-7">
-                        <p className="font-mono text-[11px] tracking-[0.18em] text-[#8eb8ff] uppercase">
-                          Highlight
-                        </p>
-                        <h4 className="font-heading mt-3 text-xl font-semibold tracking-tight">
-                          {item.project.title}
-                        </h4>
-                        <p className="mt-3 text-sm leading-relaxed text-fog/70">
-                          {item.project.description}
-                        </p>
-                        <ul className="mt-5 space-y-2">
-                          {item.project.highlights.map((highlight) => (
-                            <li
-                              key={highlight}
-                              className="text-sm leading-relaxed text-fog/60"
-                            >
-                              {highlight}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
+                    {"projects" in item
+                      ? item.projects.map((project) => (
+                          <div
+                            key={project.title}
+                            className="mt-8 max-w-3xl rounded-2xl bg-[linear-gradient(145deg,#0b1b33_0%,#102746_100%)] px-6 py-6 text-fog md:px-8 md:py-7"
+                          >
+                            <p className="font-mono text-[11px] tracking-[0.18em] text-[#8eb8ff] uppercase">
+                              Highlight
+                            </p>
+                            <h4 className="font-heading mt-3 text-xl font-semibold tracking-tight">
+                              {project.title}
+                            </h4>
+                            <p className="mt-3 text-sm leading-relaxed text-fog/70">
+                              {project.description}
+                            </p>
+                            <ul className="mt-5 space-y-2">
+                              {project.highlights.map((highlight) => (
+                                <li
+                                  key={highlight}
+                                  className="text-sm leading-relaxed text-fog/60"
+                                >
+                                  {highlight}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))
+                      : null}
                   </div>
                 </div>
               </Reveal>

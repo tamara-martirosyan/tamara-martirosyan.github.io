@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import JsonLd from "@/components/JsonLd";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
+import VolunteeringSection from "@/components/VolunteeringSection";
 import WorkSection from "@/components/WorkSection";
 import { getPersonJsonLd } from "@/lib/json-ld";
 
@@ -25,6 +26,7 @@ const Home = () => {
         <AboutSection />
         <ProjectsSection />
         <WorkSection />
+        <VolunteeringSection />
         <FocusSection />
         <SkillsSection />
         <ContactSection />

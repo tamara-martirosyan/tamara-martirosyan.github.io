@@ -48,6 +48,9 @@ const SkillsSection = () => {
           </div>
           <p className="text-base text-foreground/65 md:text-right">
             {site.education.school}
+            <span className="mt-1 block font-mono text-xs text-foreground/45">
+              {site.education.period}
+            </span>
           </p>
         </Reveal>
       </div>
