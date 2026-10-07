@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 import type { Project } from "@/lib/projects";
 
+import { PREVIEW_FRAME_CLASS_NAME } from "../../constants";
+
 const ProjectFlowPreview = ({
   project,
   className,
@@ -9,12 +11,7 @@ const ProjectFlowPreview = ({
   className?: string;
 }) => {
   return (
-    <div
-      className={cn(
-        "overflow-hidden rounded-xl border border-border bg-white shadow-[0_16px_40px_-28px_rgba(11,27,51,0.35)] transition-[border-color,box-shadow] duration-300 group-hover:border-signal/25 group-hover:shadow-[0_20px_44px_-24px_rgba(24,106,222,0.35)]",
-        className,
-      )}
-    >
+    <div className={cn(PREVIEW_FRAME_CLASS_NAME, className)}>
       <div className="border-b border-border bg-fog px-3.5 py-2.5">
         <p className="font-heading text-xs font-semibold tracking-tight text-ink">
           {project.name}

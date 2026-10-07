@@ -5,49 +5,63 @@ export const projects = [
     id: "teamworker",
     name: "TeamWorker.ai",
     category: "AI marketplace",
-    role: "Product & engineering",
+    role: "Frontend lead & full-stack engineer",
     period: "Selected work",
+    liveUrl: "https://teamworker.ai/",
     tagline:
       "An AI-powered platform that assembles human specialists and AI agents for real client work.",
     summary:
-      "TeamWorker is a marketplace where clients describe a project, the platform suggests mixed human+AI teams, and delivery runs through milestones, chat, payments, and configurable AI agents.",
+      "TeamWorker is a marketplace where clients describe a project, the platform proposes human, AI-agent, or mixed teams, and delivery runs through milestones, chat, payments, and configurable AI agents that work inside the client's own tools.",
     challenge:
-      "Outsourcing platforms usually separate humans, payments, and AI tools. We needed one product that could match teams, run milestone escrow, support realtime collaboration, and let providers ship reusable AI agents with tools and knowledge.",
+      "Outsourcing platforms keep people, payments, and AI tools in separate worlds. TeamWorker needed one product where an AI agent is a real team member — recommended next to human specialists, invited to projects, chatting with clients, and acting in Gmail, Drive, or GitHub — with reliable long-running runs and safe access to client data.",
     outcome:
-      "A full-stack product: Next.js client hub for marketing, role-based dashboards, agent studio, and chat — backed by a NestJS API with AI project matching, multi-LLM agents, Stripe payments, queues, and integrations.",
+      "I built the Next.js client hub almost entirely myself — marketing site, client/worker/admin dashboards, agent studio, and chat — and led the NestJS work on AI agents: multi-provider LLM runs with RAG and tools, queue-backed execution, integrations, team recommendation, notifications, and security hardening, on top of the original API for projects, milestones, and Stripe escrow.",
     highlights: [
-      "Built frontend architecture for the client hub — marketing site, Client/Worker/Admin dashboards, project flows, and role-based navigation",
-      "Shipped AI agent surfaces: create/configure agents, marketplace & subscriptions, integrations (Gmail, Drive, Calendar, Notion, and more), and in-project agent chat",
-      "Implemented NestJS backend domains — projects & team matching (AI PM), milestone/Stripe escrow, Ably chat, BullMQ workers, and multi-provider LLM agents with RAG and tools",
-      "Wired auth, server actions to `/v1` APIs, feature flags for AI paths, and a deployable REST + consumer architecture",
+      "Built the client hub frontend — marketing site, client/worker/admin dashboards, project creation and invitation flows, milestone and Stripe payment UI, transactions, and role-based navigation",
+      "Shipped the AI agent studio and marketplace: create and configure agents, pick models and providers, upload knowledge, subscriptions with trials, and paid agent creation",
+      "Built the agent runtime on NestJS — OpenAI, Anthropic, and Gemini providers, RAG over embedded knowledge files, a tool registry with per-agent policies and a security audit trail, and Tavily web search",
+      "Made agent runs survive real-world use: streamed responses over SSE through a Next.js proxy, detached async runs on BullMQ workers, and resume when a user reopens a chat mid-run",
+      "Integrated agents with client tools via OAuth — Gmail, Google Drive, Docs, Sheets, Slides, Calendar (with video calls), Notion, GitHub, Facebook, and Power BI",
+      "Extended team matching to recommend AI agents alongside human specialists, with human, agent, and mixed team options, assignment requests, and acceptance settings",
+      "Added goal-driven task orchestration with a task board and stop/resume, a notification system (in-app, email, and realtime via Ably), worker reviews and payouts, and an admin dashboard",
+      "Hardened the platform: Helmet, protected Bull Board, milestone ownership checks, admin access driven by an allowlist, email verification, and permanent account deletion",
     ],
     capabilities: [
-      "Auto team matching",
+      "Human + AI team matching",
       "Client & worker dashboards",
       "AI agent studio",
       "Agent marketplace",
+      "RAG & tool-using agents",
+      "Streaming & resumable runs",
+      "Google, Notion & GitHub integrations",
       "Milestone payments",
-      "Realtime chat",
-      "Integrations",
+      "Realtime chat & notifications",
       "Admin ops",
     ],
     stack: [
       "Next.js",
+      "React",
       "TypeScript",
       "Redux Toolkit",
       "NextAuth",
+      "React Hook Form",
+      "Zod",
       "Tailwind CSS",
       "shadcn/ui",
       "NestJS",
       "MongoDB",
+      "BullMQ / Redis",
       "Stripe",
       "Ably",
       "OpenAI / Anthropic / Gemini",
+      "Google APIs",
     ],
     featured: true,
+    cover: {
+      src: "/projects/teamworker/integrations.jpg",
+      alt: "TeamWorker integrations page with connect cards for Notion, Google, Gmail, Power BI, Facebook, and GitHub",
+    },
     flow: ["Describe work", "Match the team", "Deliver & pay"],
-    visualCaption:
-      "Describe the work, match humans + AI agents, then deliver and pay",
   },
   {
     id: "ditatoo",
@@ -89,6 +103,10 @@ export const projects = [
       "Zod",
     ],
     featured: true,
+    cover: {
+      src: "/projects/ditatoo/map.jpg",
+      alt: "DITAToo DITA map builder showing EasyPrint QuickStartGuide with nested API topics",
+    },
     flow: ["Files", "Document map", "Details"],
   },
   {
@@ -137,14 +155,71 @@ export const projects = [
       "PWA",
     ],
     featured: true,
+    cover: {
+      src: "/projects/kust/discover.jpg",
+      alt: "Kust Reader discover feed with recommended and new essays",
+    },
     flow: ["Discover", "Read", "Keep & support"],
+  },
+  {
+    id: "parztech",
+    name: "Parz Tech",
+    category: "Armenian tech blog",
+    role: "Founder, author & engineer",
+    period: "Personal project",
+    liveUrl: "https://parztech.vercel.app/",
+    tagline:
+      "An Armenian-language blog that explains technology and AI in plain, jargon-free language.",
+    summary:
+      "Parz Tech (“parz” means “simple” in Armenian) is a blog I write and build myself — articles on AI, security, and the Armenian IT scene, written entirely in Armenian. Readers browse by topic and react to posts; behind it sits my own admin CMS for writing and publishing.",
+    challenge:
+      "Quality writing about AI and technology barely exists in Armenian. The blog had to make long-form Armenian text a pleasure to read, give me a fast writing and publishing workflow of my own, and stay discoverable through search and social sharing — without giving up privacy or safety for readers.",
+    outcome:
+      "A full-stack Next.js App Router blog on Vercel: public pages are prerendered and refreshed on publish, posts live in Turso (SQLite) via Drizzle, and a GitHub-authenticated admin CMS handles writing, previewing, and publishing in Markdown.",
+    highlights: [
+      "Designed and built the whole product — brand, gradient visual language, Noto Sans Armenian typography, and dark/light themes with next-themes",
+      "Built the admin CMS: Markdown editor with formatting toolbar and keyboard shortcuts, live preview, drafts vs. published, featured toggle, tags, slug validation, ⌘S save, and an unsaved-changes guard",
+      "Secured publishing with Auth.js GitHub login restricted to an admin allowlist, Zod-validated server actions, and a Markdown pipeline (remark/rehype) that drops raw HTML so rendered output is safe",
+      "Shipped the reading experience — searchable, topic-filtered index, reading time, reading progress bar, Shiki code highlighting in light and dark themes, cited sources, tags, and related articles",
+      "Added anonymous emoji reactions stored per visitor as a salted SHA-256 hash of a cookie (never the raw ID), with a unique index making double-clicks harmless",
+      "Covered distribution: sitemap, robots, and RSS generated from published posts, per-article Open Graph images rendered with Satori, JSON-LD, localized `hy_AM` metadata, and Vercel Analytics",
+    ],
+    capabilities: [
+      "Markdown CMS",
+      "Drafts & publishing",
+      "GitHub admin auth",
+      "Search & topic filters",
+      "Reader reactions",
+      "Dark & light themes",
+      "RSS & sitemap",
+      "Dynamic OG images",
+    ],
+    stack: [
+      "Next.js",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Drizzle ORM",
+      "Turso (SQLite)",
+      "Auth.js",
+      "Zod",
+      "unified / Shiki",
+      "Vercel",
+    ],
+    featured: true,
+    cover: {
+      src: "/projects/parztech/home.jpg",
+      alt: "Parz Tech home page hero with the Armenian headline “Technology and AI in simple language”",
+    },
+    flow: ["Write in Markdown", "Publish", "Read & react"],
   },
 ] as const;
 
 export type ProjectId = (typeof projects)[number]["id"];
 export type Project = (typeof projects)[number] & {
   liveUrl?: string;
-  visualCaption?: string;
+  cover?: { src: string; alt: string };
 };
 
 export const featuredProjects: readonly Project[] = projects.filter(

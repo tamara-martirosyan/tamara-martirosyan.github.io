@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { getProjectPath, type Project } from "@/lib/projects";
 
+import ProjectCover from "./components/ProjectCover";
 import ProjectFlowPreview from "./components/ProjectFlowPreview";
 
 const PREVIEW_STACK_COUNT = 4;
@@ -74,10 +75,18 @@ const ProjectCard = ({
             </div>
           </div>
 
-          <ProjectFlowPreview
-            project={project}
-            className="pointer-events-none w-full shrink-0 md:max-w-xs lg:w-64 lg:max-w-none"
-          />
+          {project.cover ? (
+            <ProjectCover
+              src={project.cover.src}
+              alt={project.cover.alt}
+              className="pointer-events-none w-full shrink-0 md:w-80 lg:w-96"
+            />
+          ) : (
+            <ProjectFlowPreview
+              project={project}
+              className="pointer-events-none w-full shrink-0 md:max-w-xs lg:w-64 lg:max-w-none"
+            />
+          )}
         </div>
       </article>
     </Reveal>
